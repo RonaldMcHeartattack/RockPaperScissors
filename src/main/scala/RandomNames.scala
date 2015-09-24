@@ -4,19 +4,7 @@ import scala.util.Random
 
 object RandomNames {
 
-  def get(): String = {
-    Random.shuffle(names).head
-  }
-
-  def get(reservedName: String): String = {
-    val name = get()
-    if (name == reservedName) {
-      val name = get()
-    }
-    return name
-  }
-
-  private val names = List(
+  val names = List(
     "Yolo Swaggins",
     "Adolf the Toast Jesus",
     "Thomas the Wank Engine",
@@ -33,4 +21,18 @@ object RandomNames {
     "GrannyAnusPizza",
     "Ronald McHeartattack"
   )
+
+  def get(): String = {
+    Random.shuffle(names).head
+  }
+
+  def get(reservedName: String): String = {
+    val name = get()
+    if (name == reservedName) {
+      val name = get(reservedName)
+    }
+    return name
+  }
+
+
 }

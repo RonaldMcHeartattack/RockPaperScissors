@@ -11,10 +11,9 @@ class Game() {
     "chooseType" -> """Please choose type of game
                        |`single` - you against computer
                        |`observer` - show how computer play against another computer""".stripMargin,
-    "chooseName" -> "Choose your name or skip for use random name",
+    "chooseName" -> "Choose your name or skip skip this step",
     "chooseSign" -> "Your turn, use `rock`, `paper` or `scissors` as options",
     "replayGame" -> "Play again? Or change game type?(yes/no/change)",
-    "setComputerNames" -> "Press Enter for set random computer names",
     "computerPlay" -> "Lets play?(just press enter)"
   )
   val stateActions = Map(
@@ -54,8 +53,8 @@ class Game() {
     messages(state)
   }
 
-  private def chooseType(ln: String): String = ln match {
-    case "single" => singleGameType()
+  private def chooseType(ln: String): Any = ln match {
+    case "single" => gameType = "single"
     case "observer" => observerGameType()
     case _ => throw IncorrectInputException("Wrong choise")
   }
@@ -65,11 +64,6 @@ class Game() {
     secondPlayer.name(RandomNames.get(firstPlayer.name()))
     gameType = "observer"
     "On stage %s against %s".format(firstPlayer.name, secondPlayer.name)
-  }
-
-  private def singleGameType(): String = {
-    gameType = "single"
-    ""
   }
 
   private def chooseSign(ln: String): String = {

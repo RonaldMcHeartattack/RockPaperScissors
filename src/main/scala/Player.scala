@@ -7,8 +7,7 @@ class Player() {
   private var _name = ""
   private val history = MutableList[String]()
 
-  def name(ln: String): Unit = { _name = ln }
-
+  def name(ln: String) { _name = ln }
   def name(): String = { _name }
 
   def sign(ln: String): String = {
@@ -24,9 +23,4 @@ class Player() {
   def sign(): String = {
     history.reverse.head
   }
-
-  // def history(): List[String] {
-  //   history.map(_)
-  // }
-
 }
