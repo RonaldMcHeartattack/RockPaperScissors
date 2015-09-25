@@ -1,0 +1,4 @@
+#!/bin/bash
+# use: GIT_SSH=./git_wrapper git push -u origin master
+
+ssh -i ./id_rsa $1 $2
