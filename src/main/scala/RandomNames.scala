@@ -29,7 +29,7 @@ object RandomNames {
   def get(reservedName: String): String = {
     val name = get()
     if (name == reservedName) {
-      val name = get(reservedName)
+      return get(reservedName)
     }
     return name
   }

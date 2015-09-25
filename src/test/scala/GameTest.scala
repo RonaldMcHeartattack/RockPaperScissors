@@ -24,7 +24,6 @@ class GameTests extends FunSuite with BeforeAndAfter with Matchers {
     game.process("observer") should include ("stage")
     val msg = game.process("")
     msg should include regex "Win|Same gesture"
-    msg should include regex "Lets play?"
   }
 
 }
