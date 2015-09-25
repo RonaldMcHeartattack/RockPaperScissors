@@ -8,7 +8,7 @@ object Main extends App {
   val game = new Game()
 
   private def shutdown {
-    println("show statistics about game")
+    println("there should be statistics about game")
   }
 
   println(game.process("start"))

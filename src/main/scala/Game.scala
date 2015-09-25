@@ -17,7 +17,7 @@ class Game() {
     "computerPlay" -> "Lets play?(just press enter)"
   )
   val stateActions = Map(
-    "" -> { pass(_) },
+    "" -> { (ln: String) => Unit },
     "chooseType" -> { chooseType(_) },
     "chooseName" -> { chooseName(_) },
     "chooseSign" -> { chooseSign(_) },
@@ -33,7 +33,7 @@ class Game() {
   def process(ln: String): String = {
     try {
        stateActions(state)(ln) match {
-        case s: String => s + "\n" + next()
+        case s: String => "%s\n%s".format(s, next())
         case _ => next()
       }
     } catch {
@@ -124,20 +124,10 @@ class Game() {
     state = (ln match {
       case "" | "yes" | "y" if gameType == "single" => "chooseName"
       case "" | "yes" | "y" if gameType == "observer" => "computerPlay"
-      case "change" | "c" => "chooseType"
+      case "change" | "c" => ""
       case "no" | "not" | "exit" => sys.exit(0)
       case _ => throw IncorrectInputException("Wrong answer")
     })
   }
-
-  private def gameType(t: String): Unit = { gameType = t }
-
-  def statistics(): String = {
-    var msg = ""
-    msg
-  }
-
-  // remove me
-  private def pass(ln: String): Unit = {}
 
 }
